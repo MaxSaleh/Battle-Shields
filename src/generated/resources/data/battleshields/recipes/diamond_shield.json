@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "minecraft:shield"
+    },
+    "M": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "pattern": [
+    "MCM",
+    " M "
+  ],
+  "result": {
+    "item": "battleshields:diamond_shield"
+  }
+}

@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="GNU General Public License v3.0"
+issueTrackerURL="https://github.com/MaxSaleh/Battle-Shields/issues"
+[[mods]]
+    modId="battleshields"
+    version="${file.jarVersion}"
+    displayName="Battle Shields"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/battle-shields"
+    logoFile="logo.png"
+    credits="ToMe250 - Original Creator, Serj4ever - Russian Translation, ProSplash - Ukrainian Translation, issizk1ng - Turkish Translation"
+    authors="MaxIsH0t"
+    description='''A small Minecraft Vanilla+ Mod that adds Shields for all the Tool Materials and makes different Shields absorb different amounts of damage.'''
+[[dependencies.battleshields]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.battleshields]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"

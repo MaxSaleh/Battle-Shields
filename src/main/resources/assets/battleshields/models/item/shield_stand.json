@@ -1,0 +1,34 @@
+{
+  "parent": "battleshields:block/shield_stand",
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [0, 2, 0],
+      "scale": [0.24, 0.24, 0.24]
+    },
+    "thirdperson_lefthand": {
+      "translation": [0, 1.75, 0],
+      "scale": [0.24, 0.24, 0.24]
+    },
+    "firstperson_righthand": {
+      "scale": [0.24, 0.24, 0.24]
+    },
+    "firstperson_lefthand": {
+      "scale": [0.24, 0.24, 0.24]
+    },
+    "ground": {
+      "scale": [0.24, 0.24, 0.24]
+    },
+    "gui": {
+      "rotation": [31, 58, -4],
+      "translation": [0, -1.5, 0],
+      "scale": [0.65, 0.4, 0.54]
+    },
+    "head": {
+      "translation": [0, 14.25, 0]
+    },
+    "fixed": {
+      "translation": [-0.25, -2.5, 0.75],
+      "scale": [0.92, 0.46, 0.04]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "pattern": [
+    " S ",
+    " G ",
+    "SGS"
+  ],
+  "result": {
+    "item": "battleshields:shield_stand"
+  }
+}

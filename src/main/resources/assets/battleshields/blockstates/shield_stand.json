@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":	{ "model": "battleshields:block/shield_stand", "y": 90 },
+    "facing=south":	{ "model": "battleshields:block/shield_stand", "y": 270 },
+    "facing=west":	{ "model": "battleshields:block/shield_stand" },
+    "facing=east":	{ "model": "battleshields:block/shield_stand", "y": 180 }
+  }
+}
