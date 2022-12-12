@@ -1,7 +1,10 @@
 package me.maxish0t.battleshields.client.handlers;
 
 import me.maxish0t.battleshields.client.renderer.ShieldStandRenderer;
+import me.maxish0t.battleshields.client.screen.ShieldStandScreen;
 import me.maxish0t.battleshields.common.init.ModBlockEntities;
+import me.maxish0t.battleshields.common.init.ModContainers;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -13,6 +16,12 @@ public class ClientSetupHandler {
     public static void clientRegistries(final FMLClientSetupEvent event) {
         // Shield Stand
         BlockEntityRenderers.register(ModBlockEntities.SHIELD_STAND.get(), ShieldStandRenderer::new);
+    }
+
+    public static void registerScreens(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            MenuScreens.register(ModContainers.SHIELD_STAND.get(), ShieldStandScreen::new);
+        });
     }
 
 }

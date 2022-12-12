@@ -41,26 +41,53 @@ public class ShieldStandRenderer implements BlockEntityRenderer<ShieldStandBlock
 
         AbstractSteve abstractSteve = new AbstractSteve(minecraft.level);
         abstractSteve.setInvisible(true);
+        abstractSteve.getInventory().setItem(0, shieldStandBlockEntity.getStackInSlot(0));
 
-        // TODO
-        /**
-        float degreeAngle = 0.0F;
         switch (shieldStandBlockEntity.getAngle()) {
-            case SOUTH -> degreeAngle = 90.0F;
-            case WEST -> degreeAngle = 180.0F;
-            case NORTH -> degreeAngle = 270.0F;
-        }**/
-
-        abstractSteve.getInventory().setItem(0, new ItemStack(ModItems.DIAMOND_SHIELD.get()));
-
-        poseStack.pushPose();
-        poseStack.translate(1.35F, 1.5F, 0.2F);
-        poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 90.0F, true));
-        poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
-        poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
-        EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-        RenderSystem.runAsFancy(() -> entityRenderDispatcher.getRenderer(abstractSteve).render(abstractSteve, 0F, 0F,
-                poseStack, bufferSource, combinedLightIn));
-        poseStack.popPose();
+            case EAST -> {
+                poseStack.pushPose();
+                poseStack.translate(0.45F, 1.11F, 1.35F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 270.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
+                EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+                RenderSystem.runAsFancy(() -> entityRenderDispatcher.getRenderer(abstractSteve).render(abstractSteve, 0F, 0F,
+                        poseStack, bufferSource, combinedLightIn));
+                poseStack.popPose();
+            }
+            case SOUTH -> {
+                poseStack.pushPose();
+                poseStack.translate(0.45F, 1.11F, 1.35F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 180.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
+                EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+                RenderSystem.runAsFancy(() -> entityRenderDispatcher.getRenderer(abstractSteve).render(abstractSteve, 0F, 0F,
+                        poseStack, bufferSource, combinedLightIn));
+                poseStack.popPose();
+            }
+            case WEST -> {
+                poseStack.pushPose();
+                poseStack.translate(0.45F, 1.11F, 1.35F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 90.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
+                EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+                RenderSystem.runAsFancy(() -> entityRenderDispatcher.getRenderer(abstractSteve).render(abstractSteve, 0F, 0F,
+                        poseStack, bufferSource, combinedLightIn));
+                poseStack.popPose();
+            }
+            case NORTH -> {
+                poseStack.pushPose();
+                poseStack.translate(0.45F, 1.11F, 1.35F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 0.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
+                EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+                RenderSystem.runAsFancy(() -> entityRenderDispatcher.getRenderer(abstractSteve).render(abstractSteve, 0F, 0F,
+                        poseStack, bufferSource, combinedLightIn));
+                poseStack.popPose();
+            }
+        }
     }
 }
