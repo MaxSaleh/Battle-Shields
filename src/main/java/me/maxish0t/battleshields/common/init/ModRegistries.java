@@ -10,8 +10,11 @@ public class ModRegistries {
      */
     public static void register(IEventBus iEventBus) {
         ModBlocks.BLOCKS.register(iEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(iEventBus);
         ModItems.ITEMS.register(iEventBus);
+        ModEntities.ENTITIES.register(iEventBus);
         ModRecipes.RECIPE_SERIALIZER.register(iEventBus);
+
         new Config();
     }
 

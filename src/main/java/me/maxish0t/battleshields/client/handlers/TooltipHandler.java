@@ -1,4 +1,4 @@
-package me.maxish0t.battleshields.client;
+package me.maxish0t.battleshields.client.handlers;
 
 import java.util.List;
 

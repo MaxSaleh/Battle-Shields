@@ -1,4 +1,4 @@
-package me.maxish0t.battleshields.client;
+package me.maxish0t.battleshields.client.model;
 
 import me.maxish0t.battleshields.utilities.ModReference;
 import net.minecraft.client.resources.model.Material;

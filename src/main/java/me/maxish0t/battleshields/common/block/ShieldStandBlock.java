@@ -1,5 +1,6 @@
 package me.maxish0t.battleshields.common.block;
 
+import me.maxish0t.battleshields.common.entity.blockentity.ShieldStandBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,7 +38,7 @@ public class ShieldStandBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
-        return null;
+        return new ShieldStandBlockEntity(blockPos, blockState);
     }
 
     @Nullable

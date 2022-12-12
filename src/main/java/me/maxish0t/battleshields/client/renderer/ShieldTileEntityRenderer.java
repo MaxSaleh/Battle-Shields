@@ -1,12 +1,12 @@
-package me.maxish0t.battleshields.client;
+package me.maxish0t.battleshields.client.renderer;
 
 import java.util.List;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
-import me.maxish0t.battleshields.BattleShields;
 
+import me.maxish0t.battleshields.client.model.ShieldTextures;
 import me.maxish0t.battleshields.common.init.ModItems;
 import me.maxish0t.battleshields.utilities.ModReference;
 import net.minecraft.client.renderer.MultiBufferSource;

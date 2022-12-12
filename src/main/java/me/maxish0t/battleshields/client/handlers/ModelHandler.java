@@ -1,5 +1,6 @@
-package me.maxish0t.battleshields.client;
+package me.maxish0t.battleshields.client.handlers;
 
+import me.maxish0t.battleshields.client.model.ShieldTextures;
 import me.maxish0t.battleshields.common.init.ModItems;
 import me.maxish0t.battleshields.utilities.ModReference;
 import net.minecraft.client.resources.model.Material;

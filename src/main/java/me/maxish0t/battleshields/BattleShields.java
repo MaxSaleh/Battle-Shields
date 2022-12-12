@@ -1,5 +1,6 @@
 package me.maxish0t.battleshields;
 
+import me.maxish0t.battleshields.client.handlers.ClientSetupHandler;
 import me.maxish0t.battleshields.common.init.ModRegistries;
 import me.maxish0t.battleshields.utilities.ModReference;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,6 +14,7 @@ public class BattleShields {
 
 	public BattleShields() {
 		final IEventBus iEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		iEventBus.addListener(ClientSetupHandler::clientRegistries);
 		ModRegistries.register(iEventBus);
 	}
 

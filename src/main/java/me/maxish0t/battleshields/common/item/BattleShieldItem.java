@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import me.maxish0t.battleshields.common.config.Config;
-import me.maxish0t.battleshields.client.ShieldTileEntityRenderer;
+import me.maxish0t.battleshields.client.renderer.ShieldTileEntityRenderer;
 
 import me.maxish0t.battleshields.common.init.ModCreativeTabs;
 import me.maxish0t.battleshields.utilities.ModReference;
