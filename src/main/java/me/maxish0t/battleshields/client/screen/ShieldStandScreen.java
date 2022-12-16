@@ -3,7 +3,11 @@ package me.maxish0t.battleshields.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import me.maxish0t.battleshields.common.inventory.ShieldStandMenu;
+import me.maxish0t.battleshields.network.BattleShieldNetwork;
+import me.maxish0t.battleshields.network.packets.RotateBlockPacket;
 import me.maxish0t.battleshields.utilities.ModReference;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -20,6 +24,19 @@ public class ShieldStandScreen extends AbstractContainerScreen<ShieldStandMenu> 
 
     public ShieldStandScreen(ShieldStandMenu shieldStandMenu, Inventory inventory, Component component) {
         super(shieldStandMenu, inventory, component);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        if (this.minecraft != null)
+            this.addRenderableWidget(new Button(5, 5, 200, 20, Component.literal("Rotate"), (press) -> {
+                BattleShieldNetwork.CHANNEL.sendToServer(new RotateBlockPacket(null));
+            }, (button, poseStack, x, y) ->
+                    ShieldStandScreen.this.renderTooltip(poseStack,
+                            ShieldStandScreen.this.minecraft.font.split(Component.literal("Rotate"),
+                                    Math.max(ShieldStandScreen.this.width / 2 - 43, 170)), x, y)));
     }
 
     @Override

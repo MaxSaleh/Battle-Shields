@@ -3,6 +3,7 @@ package me.maxish0t.battleshields.common.init;
 import me.maxish0t.battleshields.client.handlers.ClientSetupHandler;
 import me.maxish0t.battleshields.common.config.Config;
 import me.maxish0t.battleshields.common.handlers.CommonSetupHandler;
+import me.maxish0t.battleshields.network.BattleShieldNetwork;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,6 +33,9 @@ public class ModRegistries {
 
         // Config
         new Config();
+
+        // Network
+        BattleShieldNetwork.init();
     }
 
 }
