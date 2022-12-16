@@ -34,7 +34,8 @@ public class BattleShieldsRecipeProvider extends RecipeProvider {
 	protected void buildCraftingRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
 		ShapedRecipeBuilder.shaped(ModBlocks.SHIELD_STAND.get())
 				.define('G', Items.GOLD_INGOT).define('S', Items.SMOOTH_STONE_SLAB)
-				.pattern(" S ").pattern(" G ").pattern("SGS")
+				.define('D', Items.DARK_OAK_PLANKS).define('I', Items.IRON_INGOT)
+				.pattern("DID").pattern("SGS").pattern("GGG")
 				.unlockedBy("has_gold_ingot", has(Items.GOLD_INGOT)).save(consumer);
 		ShapedRecipeBuilder.shaped(ModItems.IRON_SHIELD.get()).define(SHIELD_CHAR, Items.SHIELD)
 				.define(MATERIAL_CHAR, Tags.Items.INGOTS_IRON)

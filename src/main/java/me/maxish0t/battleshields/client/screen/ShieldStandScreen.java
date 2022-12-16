@@ -24,7 +24,7 @@ public class ShieldStandScreen extends AbstractContainerScreen<ShieldStandMenu> 
 
     @Override
     protected void renderLabels(@NotNull PoseStack poseStack, int var1, int var2) {
-        this.font.draw(poseStack, Component.translatable("gui.label"), 8, 6, 4210752); // TODO
+        this.font.draw(poseStack, Component.translatable("item.minecraft.shield"), 8, 6, 4210752);
         this.font.draw(poseStack, Component.translatable("container.inventory"), 8, imageHeight - 96 + 2, 4210752);
     }
 

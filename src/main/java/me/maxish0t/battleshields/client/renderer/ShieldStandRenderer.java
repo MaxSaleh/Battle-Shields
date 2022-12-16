@@ -46,8 +46,8 @@ public class ShieldStandRenderer implements BlockEntityRenderer<ShieldStandBlock
         switch (shieldStandBlockEntity.getAngle()) {
             case EAST -> {
                 poseStack.pushPose();
-                poseStack.translate(0.45F, 1.11F, 1.35F);
-                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 270.0F, true));
+                poseStack.translate(1.35F, 1.11F, 0.57F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 90.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
                 EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
@@ -58,7 +58,7 @@ public class ShieldStandRenderer implements BlockEntityRenderer<ShieldStandBlock
             case SOUTH -> {
                 poseStack.pushPose();
                 poseStack.translate(0.45F, 1.11F, 1.35F);
-                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 180.0F, true));
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 0.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
                 EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
@@ -68,8 +68,8 @@ public class ShieldStandRenderer implements BlockEntityRenderer<ShieldStandBlock
             }
             case WEST -> {
                 poseStack.pushPose();
-                poseStack.translate(0.45F, 1.11F, 1.35F);
-                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 90.0F, true));
+                poseStack.translate(-0.35F, 1.11F, 0.43F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 270.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
                 EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
@@ -79,8 +79,8 @@ public class ShieldStandRenderer implements BlockEntityRenderer<ShieldStandBlock
             }
             case NORTH -> {
                 poseStack.pushPose();
-                poseStack.translate(0.45F, 1.11F, 1.35F);
-                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 0.0F, true));
+                poseStack.translate(0.55F, 1.11F, -0.35F);
+                poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 1.0F, 0.0F), 180.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(1.0F, 0.0F, 0.0F), -72.0F, true));
                 poseStack.mulPose(new Quaternion(new Vector3f(0.0F, 0.0F, 1.0F), 5.0F, true));
                 EntityRenderDispatcher entityRenderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();

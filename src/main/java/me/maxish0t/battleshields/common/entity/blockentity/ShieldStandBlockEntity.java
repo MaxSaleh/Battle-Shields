@@ -1,5 +1,6 @@
 package me.maxish0t.battleshields.common.entity.blockentity;
 
+import io.netty.buffer.Unpooled;
 import me.maxish0t.battleshields.common.init.ModBlockEntities;
 import me.maxish0t.battleshields.common.inventory.ShieldStandMenu;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -278,9 +280,7 @@ public class ShieldStandBlockEntity extends BlockEntity implements MenuProvider,
 
     public void setAngle(Direction facing) {
         this.angle = facing;
-        if (this.level != null) {
-            this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
-        }
+        this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), 3);
     }
 
     public Direction getAngle() {

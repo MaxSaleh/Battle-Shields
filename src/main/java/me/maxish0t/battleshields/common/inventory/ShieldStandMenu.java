@@ -1,9 +1,9 @@
 package me.maxish0t.battleshields.common.inventory;
 
-import me.maxish0t.battleshields.common.entity.blockentity.ShieldStandBlockEntity;
 import me.maxish0t.battleshields.common.init.ModContainers;
 import me.maxish0t.battleshields.common.inventory.slots.ShieldSlot;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -14,31 +14,51 @@ import org.jetbrains.annotations.NotNull;
 
 public class ShieldStandMenu extends AbstractContainerMenu {
 
-    protected ShieldStandBlockEntity shieldStandBlockEntity;
+    private final Container container;
 
     // Client Side
     public ShieldStandMenu(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        super(ModContainers.SHIELD_STAND.get(), windowId);
+        this(windowId, playerInventory, new SimpleContainer(1));
         addSlot(new ShieldSlot(this, new SimpleContainer(1), 0, 80, 45));
         bindPlayerInventory(playerInventory);
     }
 
     // Server Side
-    public ShieldStandMenu(int windowId, Inventory playerInventory, ShieldStandBlockEntity shieldStandBlockEntity) {
+    public ShieldStandMenu(int windowId, Inventory playerInventory, Container container) {
         super(ModContainers.SHIELD_STAND.get(), windowId);
-        this.shieldStandBlockEntity = shieldStandBlockEntity;
-        addSlot(new ShieldSlot(this, shieldStandBlockEntity, 0, 80, 45));
+        this.container = container;
+        addSlot(new ShieldSlot(this, container, 0, 80, 45));
         bindPlayerInventory(playerInventory);
     }
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int slot) {
-        return null;
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slots = this.slots.get(slot);
+        if (slots != null && slots.hasItem()) {
+            ItemStack itemstack1 = slots.getItem();
+            itemstack = itemstack1.copy();
+            if (slot < this.container.getContainerSize()) {
+                if (!this.moveItemStackTo(itemstack1, this.container.getContainerSize(), this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(itemstack1, 0, this.container.getContainerSize(), false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemstack1.isEmpty()) {
+                slots.set(ItemStack.EMPTY);
+            } else {
+                slots.setChanged();
+            }
+        }
+
+        return itemstack;
     }
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return shieldStandBlockEntity.stillValid(player);
+        return container.stillValid(player);
     }
 
     protected void bindPlayerInventory(Inventory inventoryPlayer) {
@@ -51,4 +71,5 @@ public class ShieldStandMenu extends AbstractContainerMenu {
             addSlot(new Slot(inventoryPlayer, i, 8+i*18,142));
         }
     }
+
 }

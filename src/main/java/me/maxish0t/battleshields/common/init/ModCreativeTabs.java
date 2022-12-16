@@ -17,8 +17,8 @@ public class ModCreativeTabs {
     public static final CreativeModeTab MAIN_TAB = (new CreativeModeTab(ModReference.MOD_ID + ".main_tab") {
         @Override
         public void fillItemList(@NotNull NonNullList<ItemStack> itemStacks) {
+            itemStacks.add(Items.SHIELD.getDefaultInstance());
             super.fillItemList(itemStacks);
-            Items.SHIELD.fillItemCategory(this, itemStacks); // TODO
         }
 
         @Override
