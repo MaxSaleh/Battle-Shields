@@ -6,14 +6,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -26,11 +25,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +40,7 @@ import java.util.List;
 
 public class ShieldStandBlock extends BaseEntityBlock {
 
-    public static DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
     private final VoxelShape voxelShape = Block.box(0, 0, 0, 16, 32, 16);
 
     public ShieldStandBlock() {
@@ -60,7 +62,7 @@ public class ShieldStandBlock extends BaseEntityBlock {
 
             if (blockEntity instanceof ShieldStandBlockEntity shieldStandBlockEntity)
                 if (!player.isSecondaryUseActive())
-                    player.openMenu(shieldStandBlockEntity);
+                    NetworkHooks.openScreen((ServerPlayer) player, shieldStandBlockEntity, blockPos);
 
             return InteractionResult.CONSUME;
         }
@@ -90,7 +92,9 @@ public class ShieldStandBlock extends BaseEntityBlock {
         if (blockState.hasBlockEntity()) {
             if (level.getBlockEntity(blockPos) instanceof ShieldStandBlockEntity shieldStandBlockEntity) {
                 if(shieldStandBlockEntity.getStackInSlot(0) != ItemStack.EMPTY) {
-                    Block.popResource(level, blockPos, shieldStandBlockEntity.getStackInSlot(0));
+                    if (shieldStandBlockEntity.dropItems()) {
+                        Block.popResource(level, blockPos, shieldStandBlockEntity.getStackInSlot(0));
+                    }
                 }
             }
         }
@@ -100,8 +104,7 @@ public class ShieldStandBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(@NotNull BlockPlaceContext blockPlaceContext) {
-        return this.defaultBlockState().setValue(HORIZONTAL_FACING,
-                blockPlaceContext.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(HORIZONTAL_FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
     }
 
     @Override

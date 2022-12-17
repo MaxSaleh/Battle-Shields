@@ -1,6 +1,5 @@
 package me.maxish0t.battleshields.common.entity.blockentity;
 
-import io.netty.buffer.Unpooled;
 import me.maxish0t.battleshields.common.init.ModBlockEntities;
 import me.maxish0t.battleshields.common.inventory.ShieldStandMenu;
 import net.minecraft.core.BlockPos;
@@ -10,7 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -33,6 +31,7 @@ public class ShieldStandBlockEntity extends BlockEntity implements MenuProvider,
 
     private Direction angle = Direction.NORTH;
     private NonNullList<ItemStack> inventory;
+    private boolean shouldDrop = true;
 
     public ShieldStandBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.SHIELD_STAND.get(), blockPos, blockState);
@@ -200,7 +199,7 @@ public class ShieldStandBlockEntity extends BlockEntity implements MenuProvider,
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
-        return new ShieldStandMenu(id, inventory, this);
+        return new ShieldStandMenu(id, inventory, this, this.getBlockPos());
     }
 
     @Override
@@ -310,6 +309,14 @@ public class ShieldStandBlockEntity extends BlockEntity implements MenuProvider,
             default -> angleID = 0;
         }
         return angleID;
+    }
+
+    public void setDropItems(boolean shouldDrop) {
+        this.shouldDrop = shouldDrop;
+    }
+
+    public boolean dropItems() {
+        return this.shouldDrop;
     }
 
 }

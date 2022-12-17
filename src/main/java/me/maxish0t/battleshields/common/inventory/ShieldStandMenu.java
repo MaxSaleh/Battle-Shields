@@ -2,6 +2,7 @@ package me.maxish0t.battleshields.common.inventory;
 
 import me.maxish0t.battleshields.common.init.ModContainers;
 import me.maxish0t.battleshields.common.inventory.slots.ShieldSlot;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -15,18 +16,18 @@ import org.jetbrains.annotations.NotNull;
 public class ShieldStandMenu extends AbstractContainerMenu {
 
     private final Container container;
+    public BlockPos blockPos;
 
     // Client Side
     public ShieldStandMenu(int windowId, Inventory playerInventory, FriendlyByteBuf extraData) {
-        this(windowId, playerInventory, new SimpleContainer(1));
-        addSlot(new ShieldSlot(this, new SimpleContainer(1), 0, 80, 45));
-        bindPlayerInventory(playerInventory);
+        this(windowId, playerInventory, new SimpleContainer(1), extraData.readBlockPos());
     }
 
     // Server Side
-    public ShieldStandMenu(int windowId, Inventory playerInventory, Container container) {
+    public ShieldStandMenu(int windowId, Inventory playerInventory, Container container, BlockPos blockPos) {
         super(ModContainers.SHIELD_STAND.get(), windowId);
         this.container = container;
+        this.blockPos = blockPos;
         addSlot(new ShieldSlot(this, container, 0, 80, 45));
         bindPlayerInventory(playerInventory);
     }

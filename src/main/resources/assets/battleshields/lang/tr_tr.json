@@ -71,5 +71,7 @@
   "battleshields.shield_blocking": "Bloklandığında:",
   "itemGroup.battleshields.main_tab": "Savaş Kalkanları",
   "block.battleshields.shield_stand": "Kalkan Standı",
-  "block.battleshields.shield_stand.info": "Bir kalkan görüntüler/tutar"
+  "block.battleshields.shield_stand.info": "Bir kalkan görüntüler/tutar",
+  "screen.battleshields.rotate": "Döndür",
+  "screen.battleshields.rotate_info": "Bu, blok açısını döndürür."
 }

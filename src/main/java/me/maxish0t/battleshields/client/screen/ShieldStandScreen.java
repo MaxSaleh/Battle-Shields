@@ -9,6 +9,7 @@ import me.maxish0t.battleshields.utilities.ModReference;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,24 +20,30 @@ import org.jetbrains.annotations.NotNull;
 @OnlyIn(Dist.CLIENT)
 public class ShieldStandScreen extends AbstractContainerScreen<ShieldStandMenu> {
 
-    public static final ResourceLocation SHIELD_STAND =
+    private static final ResourceLocation SHIELD_STAND =
             new ResourceLocation(ModReference.MOD_ID, "textures/screen/shield_stand.png");
+    private final BlockPos blockPos;
 
     public ShieldStandScreen(ShieldStandMenu shieldStandMenu, Inventory inventory, Component component) {
         super(shieldStandMenu, inventory, component);
+        this.blockPos = shieldStandMenu.blockPos;
     }
 
     @Override
     protected void init() {
         super.init();
 
-        if (this.minecraft != null)
-            this.addRenderableWidget(new Button(5, 5, 200, 20, Component.literal("Rotate"), (press) -> {
-                BattleShieldNetwork.CHANNEL.sendToServer(new RotateBlockPacket(null));
-            }, (button, poseStack, x, y) ->
-                    ShieldStandScreen.this.renderTooltip(poseStack,
-                            ShieldStandScreen.this.minecraft.font.split(Component.literal("Rotate"),
-                                    Math.max(ShieldStandScreen.this.width / 2 - 43, 170)), x, y)));
+        if (this.minecraft == null)
+            return;
+
+        int w = (width - imageWidth) / 2;
+        int h = (height - imageHeight) / 2;
+
+        this.addRenderableWidget(new Button(w + 110, h + 5, 60, 20, Component.translatable("screen.battleshields.rotate"),
+                (press) -> BattleShieldNetwork.CHANNEL.sendToServer(new RotateBlockPacket(this.blockPos)), (button, poseStack, x, y) ->
+                ShieldStandScreen.this.renderTooltip(poseStack,
+                        ShieldStandScreen.this.minecraft.font.split(Component.translatable("screen.battleshields.rotate_info"),
+                                Math.max(ShieldStandScreen.this.width / 2 - 43, 170)), x, y)));
     }
 
     @Override

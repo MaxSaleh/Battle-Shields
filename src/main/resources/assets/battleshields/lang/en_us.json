@@ -71,5 +71,7 @@
   "battleshields.shield_blocking": "When blocking:",
   "itemGroup.battleshields.main_tab": "Battle Shields",
   "block.battleshields.shield_stand": "Shield Stand",
-  "block.battleshields.shield_stand.info": "Displays/holds a shield"
+  "block.battleshields.shield_stand.info": "Displays/holds a shield",
+  "screen.battleshields.rotate": "Rotate",
+  "screen.battleshields.rotate_info": "This rotates the blocks angle."
 }

@@ -71,5 +71,7 @@
   "battleshields.shield_blocking": "Beim blocken:",
   "itemGroup.battleshields.main_tab": "Kampfschilde",
   "block.battleshields.shield_stand": "Schildständer",
-  "block.battleshields.shield_stand.info": "Zeigt/hält einen Schild"
+  "block.battleshields.shield_stand.info": "Zeigt/hält einen Schild",
+  "screen.battleshields.rotate": "Drehen",
+  "screen.battleshields.rotate_info": "Dadurch wird der Blockwinkel gedreht."
 }

@@ -71,5 +71,7 @@
   "battleshields.shield_blocking": "При блокуванні:",
   "itemGroup.battleshields.main_tab": "Бойові щити",
   "block.battleshields.shield_stand": "Підставка для щита",
-  "block.battleshields.shield_stand.info": "Показує/тримає щит"
+  "block.battleshields.shield_stand.info": "Показує/тримає щит",
+  "screen.battleshields.rotate": "Обертати",
+  "screen.battleshields.rotate_info": "Це повертає блоки під кутом"
 }
